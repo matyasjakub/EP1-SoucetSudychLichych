@@ -3,8 +3,9 @@ Module Module1
         ' Zjistíme, kolik èísel chce uživatel zadat
         Console.WriteLine("Zadejte poèet èísel:")
         Dim pocetCisel As Integer = Convert.ToInt32(Console.ReadLine())
-        ' Pole pro uložení èísel
-        Dim cisla(pocetCisel - 1) As Integer
+        ' Promìnné pro souèty sudých a lichých èísel
+        Dim soucetSudych As Integer = 0
+        Dim soucetLichych As Integer = 0
         ' Cyklické zadávání èísel
         For i As Integer = 0 To pocetCisel - 1
             Dim cislo As Integer
@@ -12,18 +13,20 @@ Module Module1
                 Console.WriteLine("Zadejte nezáporné èíslo " & (i + 1) & ":")
                 cislo = Convert.ToInt32(Console.ReadLine())
                 If cislo >= 0 Then
-                    cisla(i) = cislo
+                    If cislo Mod 2 = 0 Then
+                        soucetSudych += cislo
+                    Else
+                        soucetLichych += cislo
+                    End If
                     Exit Do
                 Else
                     Console.WriteLine("Zadaná hodnota musí být nezáporná. Zkuste to znovu.")
                 End If
             Loop
         Next
-        ' Vypsání zadaných èísel
-        Console.WriteLine("Zadali jste následující èísla:")
-        For Each cislo As Integer In cisla
-            Console.WriteLine(cislo)
-        Next
+        ' Vypsání výsledkù
+        Console.WriteLine("Souèet sudých èísel: " & soucetSudych)
+        Console.WriteLine("Souèet lichých èísel: " & soucetLichych)
         ' Ukonèení programu
         Console.WriteLine("Stisknìte libovolnou klávesu pro ukonèení programu.")
         Console.ReadKey()
