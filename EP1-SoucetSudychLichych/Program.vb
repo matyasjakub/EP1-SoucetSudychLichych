@@ -3,9 +3,11 @@ Module Module1
         ' Zjistíme, kolik èísel chce uživatel zadat
         Console.WriteLine("Zadejte poèet èísel:")
         Dim pocetCisel As Integer = Convert.ToInt32(Console.ReadLine())
-        ' Promìnné pro souèty sudých a lichých èísel
+        ' Promìnné pro souèty a poèty sudých a lichých èísel
         Dim soucetSudych As Integer = 0
         Dim soucetLichych As Integer = 0
+        Dim pocetSudych As Integer = 0
+        Dim pocetLichych As Integer = 0
         ' Cyklické zadávání èísel
         For i As Integer = 0 To pocetCisel - 1
             Dim cislo As Integer
@@ -15,8 +17,10 @@ Module Module1
                 If cislo >= 0 Then
                     If cislo Mod 2 = 0 Then
                         soucetSudych += cislo
+                        pocetSudych += 1
                     Else
                         soucetLichych += cislo
+                        pocetLichych += 1
                     End If
                     Exit Do
                 Else
@@ -26,7 +30,9 @@ Module Module1
         Next
         ' Vypsání výsledkù
         Console.WriteLine("Souèet sudých èísel: " & soucetSudych)
+        Console.WriteLine("Poèet sudých èísel: " & pocetSudych)
         Console.WriteLine("Souèet lichých èísel: " & soucetLichych)
+        Console.WriteLine("Poèet lichých èísel: " & pocetLichych)
         ' Ukonèení programu
         Console.WriteLine("Stisknìte libovolnou klávesu pro ukonèení programu.")
         Console.ReadKey()
